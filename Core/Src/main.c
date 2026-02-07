@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "svpwm.h"
+#include <math.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,6 +54,7 @@ TIM_HandleTypeDef htim6;
 
 /* USER CODE BEGIN PV */
 
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -72,7 +74,8 @@ static void MX_USART3_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+static float g_test_hrz = 10.0f;
+static uint8_t g_spd_set = 0;
 /* USER CODE END 0 */
 
 /**
@@ -132,20 +135,46 @@ int main(void)
 
   // simpleFoc V2 L6234 #14
   __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, 4500);
+
+  
+
+  HAL_Delay(1000);
+
+  HAL_GPIO_WritePin(GPO_DRIVER_EN_GPIO_Port, GPO_DRIVER_EN_Pin, 0);
+  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
+  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_2, 0);
+  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, 0);
+
+  HAL_Delay(1000);
+
+  SVPWM_Init(&htim3);
+  HAL_TIM_Base_Start_IT(&htim6);
+  HAL_GPIO_WritePin(GPO_DRIVER_EN_GPIO_Port, GPO_DRIVER_EN_Pin, 1);
+
+  OpenLoop_SetSpeed(g_test_hrz, 0.3f);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	 if(g_spd_set != 0){
+		 g_spd_set = 0;
+		 OpenLoop_SetSpeed(g_test_hrz, 0.3f);
+	 }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	HAL_GPIO_TogglePin(GPO_DRIVER_EN_GPIO_Port, GPO_DRIVER_EN_Pin);
+	//HAL_GPIO_TogglePin(GPO_DRIVER_EN_GPIO_Port, GPO_DRIVER_EN_Pin);
 	HAL_Delay(2);
   }
-  /* USER CODE END 3 */
+ /* USER CODE END 3 */
 }
+
+
+
+  
+
 
 /**
   * @brief System Clock Configuration
@@ -558,7 +587,7 @@ static void MX_TIM6_Init(void)
   htim6.Instance = TIM6;
   htim6.Init.Prescaler = 170-1;
   htim6.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim6.Init.Period = 99;
+  htim6.Init.Period = 999;
   htim6.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim6) != HAL_OK)
   {
