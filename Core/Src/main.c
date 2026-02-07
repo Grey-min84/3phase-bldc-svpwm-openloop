@@ -74,7 +74,11 @@ static void MX_USART3_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-static float g_test_hrz = 2.0f;
+// 주파수 200hrz / V: 0.05  -> 최초로 모터 돌아감
+// 주파수 400hrz / V: 0.08  -> 위에보다 더 빨리 돌아감
+
+static float g_test_hrz = 200.0f;
+static float g_test_v = 0.03f;
 static uint8_t g_spd_set = 0;
 /* USER CODE END 0 */
 
@@ -151,7 +155,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim6);
   HAL_GPIO_WritePin(GPO_DRIVER_EN_GPIO_Port, GPO_DRIVER_EN_Pin, 1);
 
-  OpenLoop_SetSpeed(g_test_hrz, 0.3f);
+  OpenLoop_SetSpeed(g_test_hrz, g_test_v);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -160,7 +164,7 @@ int main(void)
   {
 	 if(g_spd_set != 0){
 		 g_spd_set = 0;
-		 OpenLoop_SetSpeed(g_test_hrz, 0.3f);
+		 OpenLoop_SetSpeed(g_test_hrz, g_test_v);
 	 }
     /* USER CODE END WHILE */
 
