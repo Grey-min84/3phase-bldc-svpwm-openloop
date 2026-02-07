@@ -17,7 +17,7 @@
 #define SQRT3_INV       0.57735027f    // 1/√3
 
 /* PWM 설정 */
-#define PWM_PERIOD      8499           // ARR 
+#define PWM_PERIOD      (8499)           // ARR 
 
 /* ============== 타입 정의 ============== */
 typedef struct {

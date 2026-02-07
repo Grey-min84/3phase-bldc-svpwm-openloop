@@ -74,7 +74,7 @@ static void MX_USART3_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-static float g_test_hrz = 10.0f;
+static float g_test_hrz = 2.0f;
 static uint8_t g_spd_set = 0;
 /* USER CODE END 0 */
 
@@ -168,13 +168,8 @@ int main(void)
 	//HAL_GPIO_TogglePin(GPO_DRIVER_EN_GPIO_Port, GPO_DRIVER_EN_Pin);
 	HAL_Delay(2);
   }
- /* USER CODE END 3 */
+  /* USER CODE END 3 */
 }
-
-
-
-  
-
 
 /**
   * @brief System Clock Configuration
@@ -530,7 +525,7 @@ static void MX_TIM3_Init(void)
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 0;
-  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_CENTERALIGNED1;
   htim3.Init.Period = 8499;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
