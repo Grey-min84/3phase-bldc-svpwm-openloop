@@ -1,0 +1,69 @@
+{
+  "configurations": [
+    {
+      "name": "Win32",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE",
+        "CAN1",
+        "USB_OTG_FS",
+        "USE_HAL_DRIVER",
+        "STM32G431xx",
+        "__GNUC__"
+      ],
+      "compilerPath": "C:\\ST\\STM32CubeIDE_1.16.0\\STM32CubeIDE\\plugins\\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.win32_1.0.200.202406191623\\tools\\bin\\arm-none-eabi-gcc.exe",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "gcc-arm",
+      "configurationProvider": "iarsystems.iar-build"
+    },
+    {
+      "name": "Linux",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE",
+        "CAN1",
+        "USB_OTG_FS",
+        "USE_HAL_DRIVER",
+        "STM32G431xx",
+        "__GNUC__"
+      ],
+      "windowsSdkVersion": "10.0.19041.0",
+      "compilerPath": "/usr/bin/arm-none-eabi-gcc",
+      "cStandard": "c17",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "gcc-arm",
+      "configurationProvider": "iarsystems.iar-build"
+    },
+    {
+      "name": "STM32",
+      "includePath": [
+        "Components",
+        "Core/Inc",
+        "Drivers/CMSIS/Device/ST/STM32F1xx/Include",
+        "Drivers/CMSIS/Include",
+        "Drivers/STM32F1xx_HAL_Driver/Inc",
+        "Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
+        "GR_Core",
+        "GR_LowLev",
+        "Model",
+        "Supports",
+        "Third_Party"
+      ],
+      "defines": [
+        "STM32G431xx",
+        "USE_HAL_DRIVER"
+      ],
+      "compilerPath": "C:\\USERS\\HWIHONG MIN\\APPDATA\\ROAMING\\CODE\\USER\\GLOBALSTORAGE\\BMD.STM32-FOR-VSCODE\\@XPACK-DEV-TOOLS\\ARM-NONE-EABI-GCC\\12.2.1-1.2.1\\.CONTENT\\BIN\\ARM-NONE-EABI-GCC.EXE"
+    }
+  ],
+  "version": 4
+}

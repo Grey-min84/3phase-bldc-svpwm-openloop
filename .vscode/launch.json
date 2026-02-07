@@ -1,0 +1,122 @@
+// Configure debug launch settings
+// Feel free to copy these and modify them for your debugger and MCU
+{
+    "version": "0.2.0",
+    "projectName": "GR1_VCU_IDE_PoC",
+    "configurations": [
+        {
+            "name": "JLink launch",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/GR1_VCU_IDE_PoC.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "jlink",
+            "device": "STM32F103VCT",
+            "interface": "swd",
+            "runToEntryPoint": "true",
+            "preLaunchTask": "Build all",
+            "svdFile": "",
+            "swoConfig": {
+                "enabled": true,
+                "cpuFrequency": 160000000,
+                "swoFrequency": 4000000,
+                "source": "probe",
+                "decoders": [
+                    {
+                        "label": "ITM port 0 output",
+                        "type": "console",
+                        "port": 0,
+                        "showOnStartup": true,
+                        "encoding": "ascii"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "JLink attach",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/GR1_VCU_IDE_PoC.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "servertype": "jlink",
+            "device": "STM32F103VCT",
+            "interface": "swd",
+            "runToEntryPoint": "true",
+            "preLaunchTask": "Build all",
+            "svdFile": "",
+            "swoConfig": {
+                "enabled": true,
+                "cpuFrequency": 160000000,
+                "swoFrequency": 4000000,
+                "source": "probe",
+                "decoders": [
+                    {
+                        "label": "ITM port 0 output",
+                        "type": "console",
+                        "port": 0,
+                        "showOnStartup": true,
+                        "encoding": "ascii"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "STlink launch",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/GR1_VCU_IDE_PoC.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            "device": "STM32F103VCT",
+            "interface": "swd",
+            "runToEntryPoint": "true",
+            "preLaunchTask": "Build all",
+            "svdFile": "",
+            "swoConfig": {}
+        },
+        {
+            "name": "STlink attach",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/GR1_VCU_IDE_PoC.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            "device": "STM32F103VCT",
+            "interface": "swd",
+            "runToEntryPoint": "true",
+            "preLaunchTask": "Build all",
+            "svdFile": "",
+            "swoConfig": {}
+        },
+        {
+            "showDevDebugOutput": "parsed",
+            "cwd": "${workspaceRoot}",
+            "executable": "./build/GR1_VCU_IDE_PoC.elf",
+            "name": "Debug STM32",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "preLaunchTask": "Build STM",
+            "device": "stm32f103xe.s",
+            "configFiles": [
+                "openocd.cfg"
+            ],
+            "svdFile": "STM32F103xx.svd"
+        },
+        {
+            "showDevDebugOutput": "parsed",
+            "cwd": "${workspaceRoot}",
+            "executable": "./build/GR1_VCU_IDE_PoC.elf",
+            "name": "Attach STM32",
+            "request": "attach",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "preLaunchTask": "Build STM",
+            "device": "stm32f103xe.s",
+            "configFiles": [
+                "openocd.cfg"
+            ],
+            "svdFile": "STM32F103xx.svd"
+        }
+    ]
+}
